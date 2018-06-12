@@ -10,6 +10,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket) {
     console.log('a user connected');
     socket.on('chat message', function(msg) {
+        io.emit('chat message', msg); // this line of code is used to emit the msg got from user to other users.
         console.log('message: ' + msg);
     });
     // socket.on('disconnect', function() {
